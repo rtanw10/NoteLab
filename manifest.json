@@ -4,6 +4,9 @@
   "version": "0.0",
   "manifest_version": 3,
   "action": {
-    "default_popup": "notes.html"
+    "default_popup": "notes.html",
+    "default_icon": {
+      "48": "logo.png"
+    }
   }
 }
