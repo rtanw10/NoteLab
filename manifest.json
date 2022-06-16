@@ -1,0 +1,9 @@
+{
+  "name": "NoteLab",
+  "description": "Base Level Extension",
+  "version": "0.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "notes.html"
+  }
+}
