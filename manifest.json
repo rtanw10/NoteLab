@@ -1,6 +1,6 @@
 {
   "name": "NoteLab",
-  "description": "Base Level Extension",
+  "description": "A Google Chrome extension that makes taking notes 100 times easier.",
   "version": "0.0",
   "manifest_version": 3,
   "action": {
