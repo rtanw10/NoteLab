@@ -3,6 +3,7 @@
   "description": "A Google Chrome extension that makes taking notes 100 times easier.",
   "version": "0.0",
   "manifest_version": 3,
+  "permissions": ["tabs", "contextMenus"],
   "action": {
     "default_popup": "notes.html",
     "default_icon": {
