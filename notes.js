@@ -31,55 +31,64 @@ saveFileButton.addEventListener("click", (e) => {
     document.body.removeChild(element);
 });
 
+function changeFormat(format, extraValue) {
+    document.execCommand(format, false, extraValue);
+}
+
 document.getElementById("bold").addEventListener("click", () => {
-    let bold = document.getElementById("notes");
-    if (bold.style.fontWeight === "bold") {
-        bold.style.fontWeight = "";
-    }
-    else {
-        bold.style.fontWeight = "bold";
-    }
+    changeFormat("bold");
 });
 
 document.getElementById("italic").addEventListener("click", () => {
-    let italics = document.getElementById("notes");
-    if (italics.style.fontStyle === "italic") {
-        italics.style.fontStyle = "";
-    }
-    else {
-        italics.style.fontStyle = "italic";
-    }
+    changeFormat("italic");
+});
+
+document.getElementById("underline").addEventListener("click", () => {
+    changeFormat("underline");
+});
+
+document.getElementById("strikeThrough").addEventListener("click", () => {
+    changeFormat("strikeThrough");
+});
+
+document.getElementById("highlight").addEventListener("click", () => {
+    changeFormat("hiliteColor", "yellow");
 });
 
 document.getElementById("alignLeft").addEventListener("click", () => {
-    let left = document.getElementById("notes");
-    if (left.style.textAlign === "left") {
-        left.style.textAlign = "";
-    }
-    else {
-        left.style.textAlign = "left";
-    }
+    changeFormat("justifyLeft");
 });
 
 document.getElementById("alignCenter").addEventListener("click", () => {
-    let center = document.getElementById("notes");
-    if (center.style.textAlign === "center") {
-        center.style.textAlign = "";
-    }
-    else {
-        center.style.textAlign = "center";
-    }
+    changeFormat("justifyCenter");
 });
 
 document.getElementById("alignRight").addEventListener("click", () => {
-    let right = document.getElementById("notes");
-    if (right.style.textAlign === "right") {
-        right.style.textAlign = "";
-    }
-    else {
-        right.style.textAlign = "right";
-    }
+    changeFormat("justifyRight");
 });
 
+document.getElementById("list").addEventListener("click", () => {
+    changeFormat("insertunorderedlist");
+});
+
+document.getElementById("orderedList").addEventListener("click", () => {
+    changeFormat("insertorderedlist");
+});
+
+document.getElementById("subscript").addEventListener("click", () => {
+    changeFormat("subscript");
+});
+
+document.getElementById("superscript").addEventListener("click", () => {
+    changeFormat("superscript");
+});
+
+document.getElementById("clearFormat").addEventListener("click", () => {
+    changeFormat("removeFormat");
+});
+
+document.getElementById("clearNotes").addEventListener("click", (e) => {
+    notes.innerHTML = "";
+});
 
 
