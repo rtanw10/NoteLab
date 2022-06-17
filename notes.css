@@ -1,6 +1,8 @@
-textarea {
+.notes {
     border-color: #eb4336;
     border-width: thick;
+    width: 25em;
+    height: 35em;
 }
 
 .title {
