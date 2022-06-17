@@ -6,5 +6,9 @@
 }
 
 .title {
-    color: #4085f0
+    color: #4085f0;
+}
+
+button:hover{
+    background-color: #f1b425;
 }
