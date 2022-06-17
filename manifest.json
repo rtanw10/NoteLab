@@ -10,10 +10,7 @@
       "48": "logo.png"
     }
   },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["init.js"]
-    }
-  ]
+  "background": {
+    "service_worker": "background.js"
+  }
 }
