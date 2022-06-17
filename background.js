@@ -7,9 +7,22 @@ chrome.runtime.onInstalled.addListener(async () => {
     })
 })
 
-chrome.contextMenus.onClicked.addListener((info) => {
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+    let textToAdd = "";
     switch (info.mediaType) {
-        case undefined: //TODO Add image, video, and audio cases
-            chrome.runtime.sendMessage({add: info.selectionText}, (response) => {});
+        case "image":
+            textToAdd = '<img src="' + info.srcUrl + '" alt="">';
+            break;
+        case "video":
+            textToAdd = '<video controls width="250px"> <source src="' + info.srcUrl + '"> Sorry, this version of chrome does not support embedded videos. </video>';
+            break;
+        case "audio":
+            textToAdd = '<audio controls src="' + info.srcUrl + '"> Sorry, this version of chrome does not supprt embedded audio. </audio>';
+            break;
+        case undefined:
+            textToAdd = info.selectionText;
+            break;
     }
+
+    chrome.tabs.sendMessage(tab.id, {text: textToAdd, type: "store text"}, (response) => {});
 })

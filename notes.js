@@ -1,10 +1,18 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-    const notes = window.localStorage.getItem("notes");
+    let notes = window.localStorage.getItem("notes");
     if (notes === null) {
         return;
     }
 
-    document.getElementById("notes").innerText = notes;
+    function addText(text) {
+        notes += "<br>" + text;
+        console.log(notes);
+        document.getElementById("notes").innerHTML = notes;
+    }
+
+    chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
+        chrome.tabs.sendMessage(tabs[0].id, {type: "get text"}, addText)
+    })
 });
 
 const notes = document.getElementById("notes");
