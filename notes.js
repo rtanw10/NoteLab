@@ -20,7 +20,7 @@ const saveButton = document.getElementById("save");
 const saveFileButton = document.getElementById("save_file");
 
 saveButton.addEventListener("click", (e) => {
-    window.localStorage.setItem("notes", notes.innerText);
+    window.localStorage.setItem("notes", notes.innerHTML);
 });
 
 saveFileButton.addEventListener("click", (e) => {
