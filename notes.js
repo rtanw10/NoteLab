@@ -102,6 +102,10 @@ document.getElementById("hyperlink").addEventListener("click", () => {
     }
 });
 
+document.getElementById("removeHyperlink").addEventListener("click", () => {
+    changeFormat("unlink");
+});
+
 document.getElementById("subscript").addEventListener("click", () => {
     changeFormat("subscript");
 });
