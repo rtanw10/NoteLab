@@ -24,20 +24,21 @@ saveButton.addEventListener("click", (e) => {
 });
 
 saveFileButton.addEventListener("click", (e) => {
-    const element = document.createElement('a');
-    const text = notes.innerHTML;
-    const blob = new Blob([text], { type: 'plain/text' });
-    const urlOfFile = URL.createObjectURL(blob);
-    let filename = prompt("What should be the name of the file? ");
+    const preHtml = "<html><head><meta charset='utf-8'><title>NoteLab</title></head><body>";
+    const postHtml = "</body></html>";
+    const html = preHtml + notes.innerHTML + postHtml;
+    const filename = prompt("What should be the name of the file? ");
 
-    element.setAttribute('href', urlOfFile);
-    element.setAttribute('download', filename); //TODO make file a pdf somehow
-    element.style.display = 'none';
+    const url = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent( html);
 
-    document.body.appendChild(element);
-    element.click();
+    const download = document.createElement("a");
+    document.body.appendChild(download);
 
-    document.body.removeChild(element);
+    download.href = url;
+    download.download = filename + ".doc";
+    download.click();
+
+    document.body.removeChild(download);
 });
 
 function changeFormat(format, extraValue) {
