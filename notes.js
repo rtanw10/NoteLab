@@ -44,6 +44,13 @@ function changeFormat(format, extraValue) {
     document.execCommand(format, false, extraValue);
 }
 
+document.getElementById("fontColor").addEventListener("click", () => {
+    let color = prompt("What color would you like the text to be? (Write the hexadecimal value for the color)");
+    if (color != null) {
+        changeFormat("foreColor", color);
+    }
+});
+
 document.getElementById("bold").addEventListener("click", () => {
     changeFormat("bold");
 });
@@ -61,7 +68,10 @@ document.getElementById("strikeThrough").addEventListener("click", () => {
 });
 
 document.getElementById("highlight").addEventListener("click", () => {
-    changeFormat("hiliteColor", "yellow");
+    let color = prompt("What color would you like to highlight with? (Write the hexadecimal value for the color)");
+    if (color != null) {
+        changeFormat("hiliteColor", color);
+    }
 });
 
 document.getElementById("alignLeft").addEventListener("click", () => {
