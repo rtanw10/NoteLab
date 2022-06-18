@@ -28,9 +28,10 @@ saveFileButton.addEventListener("click", (e) => {
     const text = notes.innerHTML;
     const blob = new Blob([text], { type: 'plain/text' });
     const urlOfFile = URL.createObjectURL(blob);
+    let filename = prompt("What should be the name of the file? ");
 
     element.setAttribute('href', urlOfFile);
-    element.setAttribute('download', "Notes"); //TODO make file a pdf somehow
+    element.setAttribute('download', filename); //TODO make file a pdf somehow
     element.style.display = 'none';
 
     document.body.appendChild(element);
@@ -81,6 +82,14 @@ document.getElementById("list").addEventListener("click", () => {
 
 document.getElementById("orderedList").addEventListener("click", () => {
     changeFormat("insertorderedlist");
+});
+
+document.getElementById("hyperlink").addEventListener("click", () => {
+    let link = prompt("What url do you want the text to link to? ");
+    if (link != null) {
+        var selectedText = document.getSelection();
+        changeFormat("insertHTML", '<a href="' + link + '" target="_blank">' + selectedText + '</a>');
+    }
 });
 
 document.getElementById("subscript").addEventListener("click", () => {
