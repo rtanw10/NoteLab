@@ -11,23 +11,25 @@
 <body>
     <div>
         <div>
-            <button type="button" id="fontColor"> <span class="fa fa-font"></span> <span class="fa fa-palette"></span> </button>
-            <button type="button" id="bold"> <span class="fa fa-bold fa-fw"></span> </button>
-            <button type="button" id="italic"> <span class="fa fa-italic fa-fw"></span> </button>
-            <button type="button" id="underline"> <span class="fa fa-underline"></span> </button>
-            <button type="button" id="strikeThrough"> <span class="fa fa-strikethrough"></span> </button>
-            <button type="button" id="highlight"> <span class="fa fa-highlighter"></span> </button>
-            <button type="button" id="alignLeft"> <span class="fas fa-align-left"></span> </button>
-            <button type="button" id="alignCenter"> <span class="fas fa-align-center"></span> </button>
-            <button type="button" id="alignRight"> <span class="fas fa-align-right"></span> </button>
-            <button type="button" id="list"> <span class="fa fa-list fa-fw"></span> </button>
-            <button type="button" id="orderedList"> <span class="fa fa-list-ol"></span> </button>
-            <button type="button" id="hyperlink"> <span class="fa fa-link fa-fw"></span> </button>
-            <button type="button" id="removeHyperlink"> <span class="fa fa-link-slash"></span> </button>
-            <button type="button" id="subscript"> <span class="fa fa-subscript"></span> </button>
-            <button type="button" id="superscript"> <span class="fa fa-superscript"></span> </button>
-            <button type="button" id="clearFormat"> <span class="fa fa-text-slash"></span> </button>
-            <button type="button" id="clearNotes"> <span class="fa fa-trash"></span> </button>
+            <div class="buttons">
+                <button type="button" id="fontColor"> <span class="fa fa-font"></span> <span class="fa fa-palette"></span> </button>
+                <button type="button" id="bold"> <span class="fa fa-bold fa-fw"></span> </button>
+                <button type="button" id="italic"> <span class="fa fa-italic fa-fw"></span> </button>
+                <button type="button" id="underline"> <span class="fa fa-underline"></span> </button>
+                <button type="button" id="strikeThrough"> <span class="fa fa-strikethrough"></span> </button>
+                <button type="button" id="highlight"> <span class="fa fa-highlighter"></span> </button>
+                <button type="button" id="alignLeft"> <span class="fas fa-align-left"></span> </button>
+                <button type="button" id="alignCenter"> <span class="fas fa-align-center"></span> </button>
+                <button type="button" id="alignRight"> <span class="fas fa-align-right"></span> </button>
+                <button type="button" id="list"> <span class="fa fa-list fa-fw"></span> </button>
+                <button type="button" id="orderedList"> <span class="fa fa-list-ol"></span> </button>
+                <button type="button" id="hyperlink"> <span class="fa fa-link fa-fw"></span> </button>
+                <button type="button" id="removeHyperlink"> <span class="fa fa-link-slash"></span> </button>
+                <button type="button" id="subscript"> <span class="fa fa-subscript"></span> </button>
+                <button type="button" id="superscript"> <span class="fa fa-superscript"></span> </button>
+                <button type="button" id="clearFormat"> <span class="fa fa-text-slash"></span> </button>
+                <button type="button" id="clearNotes"> <span class="fa fa-trash"></span> </button>
+            </div>
         </div>
 
         <br>
@@ -36,9 +38,11 @@
             contentEditable="true" class="notes" id="notes"> Write your notes here...
         </div>
 
+        <br>
+
         <div>
-            <button type="button" id="save"> Save Notes</button>
-            <button type="button" id="save_file"> Save as PDF</button>
+            <button type="button" class="save" id="save"> Save Notes</button>
+            <button type="button" class="save" id="save_file"> Save as PDF</button>
         </div>
 
     </div>

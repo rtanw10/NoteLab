@@ -11,6 +11,17 @@
 
 .title {
     color: #4085f0;
+    text-align: center;
+    font-size: xx-large;
+}
+
+.save:hover{
+    background-color: #eb4336;
+}
+
+.buttons {
+    max-width: 584px;
+    margin: 0 auto;
 }
 
 button:hover{
