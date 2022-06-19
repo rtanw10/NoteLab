@@ -24,21 +24,18 @@ saveButton.addEventListener("click", (e) => {
 });
 
 saveFileButton.addEventListener("click", (e) => {
-    const preHtml = "<html><head><meta charset='utf-8'><title>NoteLab</title></head><body>";
-    const postHtml = "</body></html>";
-    const html = preHtml + notes.innerHTML + postHtml;
-    const filename = prompt("What should be the name of the file? ");
+    if (notes.innerHTML.includes("imgg") || notes.innerHTML.includes("video") || notes.innerHTML.includes("audio")) {
+        alert("Unfortunately, saving notes with images, videos, and audio files currently does not work. Sorry for the inconvenience.")
+        return;
+    }
 
-    const url = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent( html);
+    const doc = jsPDF();
+    const filename = prompt("What should be the name of the file?")
 
-    const download = document.createElement("a");
-    document.body.appendChild(download);
-
-    download.href = url;
-    download.download = filename + ".doc";
-    download.click();
-
-    document.body.removeChild(download);
+    doc.fromHTML(notes.innerHTML, 15, 15, {
+        width: "170"
+    });
+    doc.save(filename);
 });
 
 function changeFormat(format, extraValue) {
