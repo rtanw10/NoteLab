@@ -1,6 +1,8 @@
 # NoteLab
 A Google Chrome extension that makes taking educational notes 100 times easier.
 
+## *This project won first place at the Hack the Education and Beyond 2022 Hackathon*
+
 ## Try it out!
 Download the Source Code, and load our extension as an unpacked extension! To do this, simply:
 
