@@ -14,10 +14,10 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
             textToAdd = '<img src="' + info.srcUrl + '" alt="">';
             break;
         case "video":
-            textToAdd = '<video controls width="250px"> <source src="' + info.srcUrl + '" contenteditable="true"> Sorry, this version of chrome does not support embedded videos. </video>';
+            textToAdd = '<video controls width="250px"> <source src="' + info.srcUrl + '" contenteditable="true"> <a href="' + info.srcUrl + '">Video</a> </video>';
             break;
         case "audio":
-            textToAdd = '<audio controls src="' + info.srcUrl + '" contenteditable="true"> Sorry, this version of chrome does not supprt embedded audio. </audio>';
+            textToAdd = '<audio controls src="' + info.srcUrl + '" contenteditable="true"> <a href="' + info.srcUrl + '">Audio</a> </audio>';
             break;
         case undefined:
             textToAdd = info.selectionText;
