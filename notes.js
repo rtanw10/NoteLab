@@ -3,17 +3,21 @@ document.addEventListener('DOMContentLoaded', (event) => {
     if (notes === null) {
         return;
     }
-
-    function addText(text) {
-        notes += "<br>" + text;
-        console.log(notes);
-        document.getElementById("notes").innerHTML = notes;
-    }
+    document.getElementById("notes").innerHTML = notes;
 
     chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
         chrome.tabs.sendMessage(tabs[0].id, {type: "get text"}, addText)
     })
 });
+
+function addText(text) {
+    if (text === undefined) {
+        return;
+    }
+    console.log(text);
+    console.log(typeof text);
+    document.getElementById("notes").innerHTML += "<br>" + text;
+};
 
 const notes = document.getElementById("notes");
 const saveButton = document.getElementById("save");
