@@ -72,6 +72,14 @@ document.getElementById("highlight").addEventListener("click", () => {
     }
 });
 
+document.getElementById("indent").addEventListener("click", () => {
+    changeFormat("indent");
+});
+
+document.getElementById("outdent").addEventListener("click", () => {
+    changeFormat("outdent");
+});
+
 document.getElementById("alignLeft").addEventListener("click", () => {
     changeFormat("justifyLeft");
 });
@@ -82,6 +90,10 @@ document.getElementById("alignCenter").addEventListener("click", () => {
 
 document.getElementById("alignRight").addEventListener("click", () => {
     changeFormat("justifyRight");
+});
+
+document.getElementById("alignJustify").addEventListener("click", () => {
+    changeFormat("justifyFull");
 });
 
 document.getElementById("list").addEventListener("click", () => {
