@@ -15,7 +15,11 @@
     font-size: xx-large;
 }
 
-.save:hover{
+#colorPicker {
+    margin-bottom: 15px;
+}
+
+.save:hover {
     background-color: #eb4336;
 }
 
@@ -24,6 +28,6 @@
     margin: 0 auto;
 }
 
-button:hover{
-    background-color: #f1b425;
+.button:hover {
+    background-color: #FABB29;
 }

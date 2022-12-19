@@ -7,34 +7,38 @@
     <script src="fontawesome.js" crossorigin="anonymous"></script>
 
     <h1 class="title">NoteLab</h1>
+
+
 </head>
 <body>
     <div>
-        <div>
+        <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+            <div>
+                <label for="colorPicker" style="font-size: 17px; color:#30A858;">Color Selector: </label>
+                <input class="button" type="color" id="colorPicker">
+            </div>
+
             <div class="buttons">
-                <button type="button" id="fontColor"> <span class="fa fa-font"></span> <span class="fa fa-palette"></span> </button>
-                <button type="button" id="bold"> <span class="fa fa-bold fa-fw"></span> </button>
-                <button type="button" id="italic"> <span class="fa fa-italic fa-fw"></span> </button>
-                <button type="button" id="underline"> <span class="fa fa-underline"></span> </button>
-                <button type="button" id="strikeThrough"> <span class="fa fa-strikethrough"></span> </button>
-                <button type="button" id="highlight"> <span class="fa fa-highlighter"></span> </button>
-
-                <input type="color" id="colorPicker">
-
-                <button type="button" id="indent"> <span class="fa-solid fa-indent"></span> </button>
-                <button type="button" id="outdent"> <span class="fa-solid fa-outdent"></span> </button>
-                <button type="button" id="alignLeft"> <span class="fas fa-align-left"></span> </button>
-                <button type="button" id="alignCenter"> <span class="fas fa-align-center"></span> </button>
-                <button type="button" id="alignRight"> <span class="fas fa-align-right"></span> </button>
-                <button type="button" id="alignJustify"> <span class="fa-solid fa-align-justify"></span> </button>
-                <button type="button" id="list"> <span class="fa fa-list fa-fw"></span> </button>
-                <button type="button" id="orderedList"> <span class="fa fa-list-ol"></span> </button>
-                <button type="button" id="hyperlink"> <span class="fa fa-link fa-fw"></span> </button>
-                <button type="button" id="removeHyperlink"> <span class="fa fa-link-slash"></span> </button>
-                <button type="button" id="subscript"> <span class="fa fa-subscript"></span> </button>
-                <button type="button" id="superscript"> <span class="fa fa-superscript"></span> </button>
-                <button type="button" id="clearFormat"> <span class="fa fa-text-slash"></span> </button>
-                <button type="button" id="clearNotes"> <span class="fa fa-trash"></span> </button>
+                <button class="button" id="fontColor"> <span class="fa fa-font"></span> <span class="fa fa-palette"></span> </button>
+                <button class="button" id="bold"> <span class="fa fa-bold fa-fw"></span> </button>
+                <button class="button" id="italic"> <span class="fa fa-italic fa-fw"></span> </button>
+                <button class="button" id="underline"> <span class="fa fa-underline"></span> </button>
+                <button class="button" id="strikeThrough"> <span class="fa fa-strikethrough"></span> </button>
+                <button class="button" id="highlight"> <span class="fa fa-highlighter"></span> </button>
+                <button class="button" id="indent"> <span class="fa-solid fa-indent"></span> </button>
+                <button class="button" id="outdent"> <span class="fa-solid fa-outdent"></span> </button>
+                <button class="button" id="alignLeft"> <span class="fas fa-align-left"></span> </button>
+                <button class="button" id="alignCenter"> <span class="fas fa-align-center"></span> </button>
+                <button class="button" id="alignRight"> <span class="fas fa-align-right"></span> </button>
+                <button class="button" id="alignJustify"> <span class="fa-solid fa-align-justify"></span> </button>
+                <button class="button" id="list"> <span class="fa fa-list fa-fw"></span> </button>
+                <button class="button" id="orderedList"> <span class="fa fa-list-ol"></span> </button>
+                <button class="button" id="hyperlink"> <span class="fa fa-link fa-fw"></span> </button>
+                <button class="button" id="removeHyperlink"> <span class="fa fa-link-slash"></span> </button>
+                <button class="button" id="subscript"> <span class="fa fa-subscript"></span> </button>
+                <button class="button" id="superscript"> <span class="fa fa-superscript"></span> </button>
+                <button class="button" id="clearFormat"> <span class="fa fa-text-slash"></span> </button>
+                <button class="button" id="clearNotes"> <span class="fa fa-trash"></span> </button>
             </div>
         </div>
 
@@ -47,8 +51,8 @@
         <br>
 
         <div>
-            <button type="button" class="save" id="save"> Save Notes</button>
-            <button type="button" class="save" id="save_file"> Save as Word Document</button>
+            <button class="save" id="save"> Save Notes</button>
+            <button class="save" id="save_file"> Save as Word Document</button>
         </div>
 
     </div>
