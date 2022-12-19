@@ -1,9 +1,8 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     let notes = window.localStorage.getItem("notes");
-    if (notes === null) {
-        return;
+    if (notes !== null) {
+        document.getElementById("notes").innerHTML = notes;
     }
-    document.getElementById("notes").innerHTML = notes;
 
     chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
         chrome.tabs.sendMessage(tabs[0].id, {type: "get text"}, addText)
@@ -22,6 +21,7 @@ function addText(text) {
 const notes = document.getElementById("notes");
 const saveButton = document.getElementById("save");
 const saveFileButton = document.getElementById("save_file");
+let colorValue = document.getElementById("colorPicker");
 
 saveButton.addEventListener("click", (e) => {
     window.localStorage.setItem("notes", notes.innerHTML);
@@ -76,10 +76,7 @@ function changeFormat(format, extraValue) {
 }
 
 document.getElementById("fontColor").addEventListener("click", () => {
-    let color = prompt("What color would you like the text to be? (Write the hexadecimal value for the color)");
-    if (color != null) {
-        changeFormat("foreColor", color);
-    }
+    changeFormat("foreColor", colorValue.value);
 });
 
 document.getElementById("bold").addEventListener("click", () => {
@@ -99,10 +96,7 @@ document.getElementById("strikeThrough").addEventListener("click", () => {
 });
 
 document.getElementById("highlight").addEventListener("click", () => {
-    let color = prompt("What color would you like to highlight with? (Write the hexadecimal value for the color)");
-    if (color != null) {
-        changeFormat("hiliteColor", color);
-    }
+    changeFormat("hiliteColor", colorValue.value);
 });
 
 document.getElementById("indent").addEventListener("click", () => {
