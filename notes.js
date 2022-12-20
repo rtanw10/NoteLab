@@ -159,4 +159,11 @@ document.getElementById("clearNotes").addEventListener("click", (e) => {
     notes.innerHTML = "";
 });
 
+//This is the code for dark mode
+let darkMode = document.getElementById("darkMode");
+darkMode.onclick=function(){
+    document.body.classList.toggle("dark-mode");
+
+}
+
 

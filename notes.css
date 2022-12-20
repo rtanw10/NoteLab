@@ -1,3 +1,17 @@
+:root {
+    --primary-color: #ffffff;
+    --secondary-color: #2B2B2B;
+}
+
+.dark-mode{
+    --primary-color: #2B2B2B;
+    --secondary-color: #ffffff;
+}
+
+body {
+    background-color: var(--primary-color);
+}
+
 .notes {
     border-color: #eb4336;
     border-width: thick;
@@ -17,17 +31,27 @@
 
 #colorPicker {
     margin-bottom: 15px;
+    padding: 2px;
 }
 
 .save:hover {
     background-color: #eb4336;
 }
 
-.buttons {
+.buttonMenu {
     max-width: 584px;
     margin: 0 auto;
 }
 
+.button, .save{
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+    border: var(--secondary-color) solid 1px;
+    padding: 7px;
+    margin: 0.5px;
+}
+
 .button:hover {
     background-color: #FABB29;
+    cursor: pointer;
 }
