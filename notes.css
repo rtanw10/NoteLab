@@ -3,13 +3,22 @@
     --secondary-color: #2B2B2B;
 }
 
-.dark-mode{
+.dark-mode {
     --primary-color: #2B2B2B;
     --secondary-color: #ffffff;
+    transition-timing-function: ease-in-out;
+    transition-duration: 1s;
+}
+
+#darkMode {
+    transition-timing-function: ease-in-out;
+    transition-duration: 1s;
 }
 
 body {
     background-color: var(--primary-color);
+    transition-timing-function: ease-in-out;
+    transition-duration: 1s;
 }
 
 .notes {
@@ -49,6 +58,8 @@ body {
     border: var(--secondary-color) solid 1px;
     padding: 7px;
     margin: 0.5px;
+    transition-timing-function: ease-in-out;
+    transition-duration: 1s;
 }
 
 .button:hover {

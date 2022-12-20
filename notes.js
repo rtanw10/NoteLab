@@ -163,7 +163,11 @@ document.getElementById("clearNotes").addEventListener("click", (e) => {
 let darkMode = document.getElementById("darkMode");
 darkMode.onclick=function(){
     document.body.classList.toggle("dark-mode");
-
+    imageClockwiseRotation(darkMode)
 }
 
+//This is the code to rotate the dark mode button
+function imageClockwiseRotation(image) {
+    image.style.transform += 'rotate(180deg)';
+}
 
