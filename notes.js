@@ -124,7 +124,7 @@ document.getElementById("fontfamily").addEventListener("click", () => {
 });
 
 document.getElementById("fontSize").addEventListener("click", () => {
-    let fontSize = prompt("What font size would you like for your notes?");
+    let fontSize = prompt("What font size would you like for your notes? (Enter a number between 1 to 7)");
     if (fontSize != null) {
         changeFormat("fontSize", parseInt(fontSize));
     }
