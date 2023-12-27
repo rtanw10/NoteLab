@@ -83,6 +83,20 @@ document.getElementById("redo").addEventListener("click", () => {
     changeFormat("redo");
 });
 
+document.getElementById("fontfamily").addEventListener("click", () => {
+    let fontFamily = prompt("What font family would you like your notes to be in?");
+    if (fontFamily != null) {
+        changeFormat("fontName", fontFamily);
+    }
+});
+
+document.getElementById("fontSize").addEventListener("click", () => {
+    let fontSize = prompt("What font size would you like for your notes?");
+    if (fontSize != null) {
+        changeFormat("fontSize", parseInt(fontSize));
+    }
+});
+
 document.getElementById("fontColor").addEventListener("click", () => {
     changeFormat("foreColor", colorValue.value);
 });
