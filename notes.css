@@ -66,3 +66,11 @@ body {
     background-color: #FABB29;
     cursor: pointer;
 }
+
+.save {
+    margin-right: 10px;
+}
+
+#saved, #saving, #not-saved {
+    display: none;
+}

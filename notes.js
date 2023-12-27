@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     if (notes !== null) {
         document.getElementById("notes").innerHTML = notes;
     }
+    document.getElementById("saved").style.display = "initial";
 
     chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
         chrome.tabs.sendMessage(tabs[0].id, {type: "get text"}, addText)
@@ -23,9 +24,41 @@ const saveButton = document.getElementById("save");
 const saveFileButton = document.getElementById("save_file");
 let colorValue = document.getElementById("colorPicker");
 
-saveButton.addEventListener("click", (e) => {
-    window.localStorage.setItem("notes", notes.innerHTML);
-});
+function toggleSaveText(status) {
+    switch (status) {
+        case "saved":
+            document.getElementById("saved").style.display = "initial";
+            document.getElementById("saving").style.display = "none";
+            document.getElementById("not-saved").style.display = "none";
+            break;
+        case "saving":
+            document.getElementById("saved").style.display = "none";
+            document.getElementById("saving").style.display = "initial";
+            document.getElementById("not-saved").style.display = "none";
+            break;
+        case "not saved":
+            document.getElementById("saved").style.display = "none";
+            document.getElementById("saving").style.display = "none";
+            document.getElementById("not-saved").style.display = "initial";
+            break;
+    }
+}
+
+function save() {
+    toggleSaveText("saving");
+    setTimeout(() => {
+        window.localStorage.setItem("notes", notes.innerHTML);
+        toggleSaveText("saved");
+    }, 1500)
+}
+saveButton.addEventListener("click", save);
+
+let content;
+notes.addEventListener("input", (e) => {
+    toggleSaveText("not saved");
+    clearTimeout(content);
+    content = setTimeout(save, 1000);
+})
 
 saveFileButton.addEventListener("click", (e) => {
     // if (notes.innerHTML.includes("img") || notes.innerHTML.includes("video") || notes.innerHTML.includes("audio")) {
