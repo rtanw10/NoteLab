@@ -75,6 +75,14 @@ function changeFormat(format, extraValue) {
     document.execCommand(format, false, extraValue);
 }
 
+document.getElementById("undo").addEventListener("click", () => {
+    changeFormat("undo");
+});
+
+document.getElementById("redo").addEventListener("click", () => {
+    changeFormat("redo");
+});
+
 document.getElementById("fontColor").addEventListener("click", () => {
     changeFormat("foreColor", colorValue.value);
 });
