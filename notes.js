@@ -116,6 +116,10 @@ document.getElementById("redo").addEventListener("click", () => {
     changeFormat("redo");
 });
 
+document.getElementById("backgroundColor").addEventListener("click", () => {
+    document.getElementById("notes").style.backgroundColor = colorValue.value;
+});
+
 document.getElementById("fontfamily").addEventListener("click", () => {
     let fontFamily = prompt("What font family would you like your notes to be in?");
     if (fontFamily != null) {
@@ -212,6 +216,7 @@ document.getElementById("clearFormat").addEventListener("click", () => {
 
 document.getElementById("clearNotes").addEventListener("click", (e) => {
     notes.innerHTML = "";
+    document.getElementById("notes").style.backgroundColor = "white";
 });
 
 //This is the code for dark mode
