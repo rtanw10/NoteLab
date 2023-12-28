@@ -210,6 +210,25 @@ document.getElementById("superscript").addEventListener("click", () => {
     changeFormat("superscript");
 });
 
+document.getElementById("insertTable").addEventListener("click", () => {
+    const table = document.createElement("table");
+    table.style.width = '360px';
+    table.style.border = '1px solid black';
+
+    for (let i = 0; i < 3; i++) {
+        const tr = table.insertRow();
+        for (let j = 0; j < 2; j++) {
+            const td = tr.insertCell();
+            td.style.border = '1px solid black';
+            td.style.height = '30px';
+            td.style.width = '50px';
+            td.contentEditable = 'true';
+        }
+    }
+    document.getElementById("notes").appendChild(table);
+    changeFormat("removeFormat");
+});
+
 document.getElementById("clearFormat").addEventListener("click", () => {
     changeFormat("removeFormat");
 });
