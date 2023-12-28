@@ -202,6 +202,10 @@ document.getElementById("removeHyperlink").addEventListener("click", () => {
     changeFormat("unlink");
 });
 
+document.getElementById("lineDivider").addEventListener("click", () => {
+    changeFormat("insertHorizontalRule");
+});
+
 document.getElementById("subscript").addEventListener("click", () => {
     changeFormat("subscript");
 });
@@ -216,7 +220,7 @@ document.getElementById("clearFormat").addEventListener("click", () => {
 
 document.getElementById("clearNotes").addEventListener("click", (e) => {
     notes.innerHTML = "";
-    document.getElementById("notes").style.backgroundColor = "white";
+    document.getElementById("notes").style.backgroundColor = "transparent";
 });
 
 //This is the code for dark mode
