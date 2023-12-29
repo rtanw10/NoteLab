@@ -58,7 +58,7 @@ body {
     background-color: transparent;
     border: var(--secondary-color) solid 1px;
     padding: 7px;
-    margin: 0.5px;
+    margin: 0.2px;
     transition: color 1s ease-in-out, border 1s ease-in-out;
 }
 
