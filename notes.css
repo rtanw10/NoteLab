@@ -82,4 +82,7 @@ body {
 
 #saved, #saving, #not-saved {
     display: none;
+    color: var(--secondary-color);
+    transition: color 1s ease-in-out;
+
 }
