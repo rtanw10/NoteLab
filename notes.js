@@ -5,22 +5,21 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
     document.getElementById("saved").style.display = "initial";
 
-    const darkMode = localStorage.getItem("isDarkMode");
+    /*const darkMode = localStorage.getItem("isDarkMode");
     if (darkMode !== undefined && JSON.parse(darkMode)) {
-
         document.getElementById("darkMode").click()
-    }
+    }*/
 
     chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
         chrome.tabs.sendMessage(tabs[0].id, {type: "get text"}, addText)
     })
 });
 
-document.addEventListener("visibilitychange", (event) => {
+/*document.addEventListener("visibilitychange", (event) => {
     if (document.visibilityState === "hidden") {
         window.localStorage.setItem("isDarkMode", isDarkMode);
     }
-})
+});*/
 
 function addText(text) {
     if (text === undefined) {
@@ -35,7 +34,7 @@ const notes = document.getElementById("notes");
 const saveButton = document.getElementById("save");
 const saveFileButton = document.getElementById("save_file");
 let colorValue = document.getElementById("colorPicker");
-let isDarkMode = false;
+//let isDarkMode = false;
 
 function toggleSaveText(status) {
     switch (status) {
@@ -240,7 +239,7 @@ document.getElementById("clearNotes").addEventListener("click", (e) => {
 document.getElementById("darkMode").addEventListener("click", (event) => {
     document.body.classList.toggle("dark-mode");
     imageClockwiseRotation(event.target);
-    isDarkMode = !isDarkMode;
+    //isDarkMode = !isDarkMode;
 });
 
 //This is the code to rotate the dark mode button
