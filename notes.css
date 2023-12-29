@@ -24,7 +24,7 @@ body {
 .notes {
     border-color: #eb4336;
     border-width: thick;
-    min-height: 35em;
+    min-height: 26em;
     min-width: 30em;
     resize: both;
     overflow: auto;
