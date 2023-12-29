@@ -6,7 +6,7 @@
     <link rel="stylesheet"  href="notes.css">
     <script src="fontawesome.js" crossorigin="anonymous"></script>
 
-    <h1 class="title">NoteLab <img src="https://cdn-icons-png.flaticon.com/512/5558/5558282.png" alt="dark mode" style="width: 27px; cursor: pointer" id="darkMode"> </h1>
+    <h1 class="title">NoteLab <img src="https://cdn-icons-png.flaticon.com/512/5558/5558282.png" alt="dark mode" style="width: 27px; cursor: pointer" id="darkMode" title="Dark/Light Mode"> </h1>
 
 </head>
 <body class="theme">
@@ -18,32 +18,32 @@
             </div>
 
             <div class="buttonMenu">
-                <button class="button" id="undo"> <span class="fa-solid fa-rotate-left"></span> </button>
-                <button class="button" id="redo"> <span class="fa-solid fa-rotate-right"></span> </button>
-                <button class="button" id="backgroundColor"> <span class="fa-solid fa-paint-roller"></span> </button>
-                <button class="button" id="fontfamily">Font Family</button>
-                <button class="button" id="fontSizeButton"><span class="fa-solid fa-minus"></span> <input type="text" id="fontSize" value="3" onchange=""> <span class="fa-solid fa-plus" onclick=""></span></button>
-                <button class="button" id="fontColor"> <span class="fa fa-font"></span> <span class="fa fa-palette"></span> </button>
-                <button class="button" id="bold"> <span class="fa fa-bold fa-fw"></span> </button>
-                <button class="button" id="italic"> <span class="fa fa-italic fa-fw"></span> </button>
-                <button class="button" id="underline"> <span class="fa fa-underline"></span> </button>
-                <button class="button" id="strikeThrough"> <span class="fa fa-strikethrough"></span> </button>
-                <button class="button" id="highlight"> <span class="fa fa-highlighter"></span> </button>
-                <button class="button" id="indent"> <span class="fa-solid fa-indent"></span> </button>
-                <button class="button" id="outdent"> <span class="fa-solid fa-outdent"></span> </button>
-                <button class="button" id="alignLeft"> <span class="fas fa-align-left"></span> </button>
-                <button class="button" id="alignCenter"> <span class="fas fa-align-center"></span> </button>
-                <button class="button" id="alignRight"> <span class="fas fa-align-right"></span> </button>
-                <button class="button" id="alignJustify"> <span class="fa-solid fa-align-justify"></span> </button>
-                <button class="button" id="list"> <span class="fa fa-list fa-fw"></span> </button>
-                <button class="button" id="orderedList"> <span class="fa fa-list-ol"></span> </button>
-                <button class="button" id="hyperlink"> <span class="fa fa-link fa-fw"></span> </button>
-                <button class="button" id="removeHyperlink"> <span class="fa fa-link-slash"></span> </button>
-                <button class="button" id="lineDivider"> <span class="fa-solid fa-arrows-left-right"></span> </button>
-                <button class="button" id="subscript"> <span class="fa fa-subscript"></span> </button>
-                <button class="button" id="superscript"> <span class="fa fa-superscript"></span> </button>
-                <button class="button" id="clearFormat"> <span class="fa fa-text-slash"></span> </button>
-                <button class="button" id="clearNotes"> <span class="fa fa-trash"></span> </button>
+                <button class="button" id="undo" title="Undo"> <span class="fa-solid fa-rotate-left"></span> </button>
+                <button class="button" id="redo" title="Redo"> <span class="fa-solid fa-rotate-right"></span> </button>
+                <button class="button" id="backgroundColor" title="Background Color"> <span class="fa-solid fa-paint-roller"></span> </button>
+                <button class="button" id="fontfamily" title="Font Style">Font Style</button>
+                <button class="button" id="fontSizeButton" title="Font Size"><span class="fa-solid fa-minus" title="Decrease Font Size"></span> <input type="text" id="fontSize" value="3" title="Font Size"> <span class="fa-solid fa-plus" title="Increase Font Size"></span></button>
+                <button class="button" id="fontColor" title="Font Color"> <span class="fa fa-font"></span> <span class="fa fa-palette"></span> </button>
+                <button class="button" id="bold" title="Bold"> <span class="fa fa-bold fa-fw"></span> </button>
+                <button class="button" id="italic" title="Italic"> <span class="fa fa-italic fa-fw"></span> </button>
+                <button class="button" id="underline" title="Underline"> <span class="fa fa-underline"></span> </button>
+                <button class="button" id="strikeThrough" title="Strikethrough"> <span class="fa fa-strikethrough"></span> </button>
+                <button class="button" id="highlight" title="Highlight"> <span class="fa fa-highlighter"></span> </button>
+                <button class="button" id="indent" title="Indent"> <span class="fa-solid fa-indent"></span> </button>
+                <button class="button" id="outdent" title="Outdent"> <span class="fa-solid fa-outdent"></span> </button>
+                <button class="button" id="alignLeft" title="Left Align"> <span class="fas fa-align-left"></span> </button>
+                <button class="button" id="alignCenter" title="Center Align"> <span class="fas fa-align-center"></span> </button>
+                <button class="button" id="alignRight" title="Right Align"> <span class="fas fa-align-right"></span> </button>
+                <button class="button" id="alignJustify" title="Justify Align"> <span class="fa-solid fa-align-justify"></span> </button>
+                <button class="button" id="list" title="Bullet Point List"> <span class="fa fa-list fa-fw"></span> </button>
+                <button class="button" id="orderedList" title="Numbered List"> <span class="fa fa-list-ol"></span> </button>
+                <button class="button" id="hyperlink" title="Hyperlink"> <span class="fa fa-link fa-fw"></span> </button>
+                <button class="button" id="removeHyperlink" title="Remove HyperLink"> <span class="fa fa-link-slash"></span> </button>
+                <button class="button" id="lineDivider" title="Line Divider"> <span class="fa-solid fa-arrows-left-right"></span> </button>
+                <button class="button" id="subscript" title="Subscript"> <span class="fa fa-subscript"></span> </button>
+                <button class="button" id="superscript" title="Superscript"> <span class="fa fa-superscript"></span> </button>
+                <button class="button" id="clearFormat" title="Clear Formatting"> <span class="fa fa-text-slash"></span> </button>
+                <button class="button" id="clearNotes" title="Clear Notes"> <span class="fa fa-trash"></span> </button>
             </div>
         </div>
 
@@ -56,8 +56,8 @@
         <br>
 
         <div style="display: flex">
-            <button class="save" id="save"> Save Notes</button>
-            <button class="save" id="save_file"> Save as Word Document</button>
+            <button class="save" id="save" title="Save Note on NoteLab"><span class="fa-regular fa-floppy-disk"></span>  Save Notes</button>
+            <button class="save" id="save_file" title="Download Note as Word Document"><span class="fa-solid fa-download"></span>  Save as Word Document</button>
             <div id="not-saved">Not Saved</div>
             <div id="saving">Saving...</div>
             <div id="saved">Saved</div>
