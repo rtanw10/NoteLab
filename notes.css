@@ -62,15 +62,6 @@ body {
     transition: color 1s ease-in-out, border 1s ease-in-out;
 }
 
-#fontSizeButton {
-    padding: 4px;
-}
-
-#fontSize {
-    width: 25px;
-    text-align: center;
-}
-
 .button:hover {
     background-color: #FABB29;
     cursor: pointer;
