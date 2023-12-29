@@ -71,9 +71,13 @@ body {
     margin-right: 10px;
 }
 
+#save_file {
+    margin-right: unset;
+}
+
 #saved, #saving, #not-saved {
     display: none;
     color: var(--secondary-color);
     transition: color 1s ease-in-out;
-
+    margin: auto;
 }
