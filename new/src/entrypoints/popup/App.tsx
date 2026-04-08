@@ -76,288 +76,289 @@ function App() {
 
   return (
     <div className={"theme " + (isDarkMode ? "dark-mode" : "")}>
-      <h1 className="title">
-        NoteLab{" "}
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/5558/5558282.png"
-          alt="dark mode"
-          style={{
-            width: "27px",
-            cursor: "pointer",
-            transform: isDarkMode ? "rotate(180deg)" : "rotate(0deg)",
-            transition: "transform 1s ease-in-out",
-          }}
-          id="darkMode"
-          title="Dark/Light Mode"
-          onClick={toggleDarkMode}
-        />
-      </h1>
-
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "column",
-        }}
-      >
-        <div>
-          <label style={{ fontSize: "17px", color: "#30A858" }}>
-            Color Selector:{" "}
-          </label>
-          <input
-            className="button"
-            type="color"
-            id="colorPicker"
-            value={color}
-            onChange={(e) => setColor(e.target.value)}
-          />
+      <div className="header">
+        <div className="header-left">
+          <h1 className="title">NoteLab</h1>
         </div>
-
-        <div className="buttonMenu">
-          <button
-            className="button"
-            id="undo"
-            title="Undo"
-            onClick={() => changeFormat("undo")}
-          >
-            <span className="fa-solid fa-rotate-left"></span>
-          </button>
-          <button
-            className="button"
-            id="redo"
-            title="Redo"
-            onClick={() => changeFormat("redo")}
-          >
-            <span className="fa-solid fa-rotate-right"></span>
-          </button>
-          <button
-            className="button"
-            id="backgroundColor"
-            title="Background Color"
-            onClick={() => {
-              if (notesRef.current)
-                notesRef.current.style.backgroundColor = color;
+        <div className="header-center">
+          <div className="header-color-picker">
+            <label htmlFor="colorPicker" className="color-picker-label">
+              Color Picker:
+            </label>
+            <input
+              type="color"
+              id="colorPicker"
+              value={color}
+              onChange={(e) => setColor(e.target.value)}
+              title="Select color for text and highlights"
+            />
+          </div>
+        </div>
+        <div className="header-right">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/5558/5558282.png"
+            alt="Toggle dark/light mode"
+            id="darkMode"
+            title="Toggle Dark/Light Mode"
+            onClick={toggleDarkMode}
+            style={{
+              transform: isDarkMode ? "rotate(180deg)" : "rotate(0deg)",
             }}
-          >
-            <span className="fa-solid fa-paint-roller"></span>
-          </button>
-          <button
-            className="button"
-            id="fontfamily"
-            title="Font Style"
-            onClick={() => {
-              const fontFamily = prompt(
-                "What font family would you like your notes to be in?",
-              );
-              if (fontFamily != null) changeFormat("fontName", fontFamily);
-            }}
-          >
-            Font Style
-          </button>
-          <button
-            className="button"
-            id="fontSize"
-            title="Font Size"
-            onClick={() => {
-              const fontSize = prompt(
-                "What font size would you like for your notes? (Enter a number between 1 to 7)",
-              );
-              if (fontSize != null)
-                changeFormat("fontSize", parseInt(fontSize));
-            }}
-          >
-            <span className="fa-solid fa-font"></span>{" "}
-            <span className="fa-solid fa-plus"></span>
-          </button>
-          <button
-            className="button"
-            id="fontColor"
-            title="Font Color"
-            onClick={() => changeFormat("foreColor", color)}
-          >
-            <span className="fa fa-font"></span>{" "}
-            <span className="fa fa-palette"></span>
-          </button>
-          <button
-            className="button"
-            id="bold"
-            title="Bold"
-            onClick={() => changeFormat("bold")}
-          >
-            <span className="fa fa-bold fa-fw"></span>
-          </button>
-          <button
-            className="button"
-            id="italic"
-            title="Italic"
-            onClick={() => changeFormat("italic")}
-          >
-            <span className="fa fa-italic fa-fw"></span>
-          </button>
-          <button
-            className="button"
-            id="underline"
-            title="Underline"
-            onClick={() => changeFormat("underline")}
-          >
-            <span className="fa fa-underline"></span>
-          </button>
-          <button
-            className="button"
-            id="strikeThrough"
-            title="Strikethrough"
-            onClick={() => changeFormat("strikeThrough")}
-          >
-            <span className="fa fa-strikethrough"></span>
-          </button>
-          <button
-            className="button"
-            id="highlight"
-            title="Highlight"
-            onClick={() => changeFormat("hiliteColor", color)}
-          >
-            <span className="fa fa-highlighter"></span>
-          </button>
-          <button
-            className="button"
-            id="indent"
-            title="Indent"
-            onClick={() => changeFormat("indent")}
-          >
-            <span className="fa-solid fa-indent"></span>
-          </button>
-          <button
-            className="button"
-            id="outdent"
-            title="Outdent"
-            onClick={() => changeFormat("outdent")}
-          >
-            <span className="fa-solid fa-outdent"></span>
-          </button>
-          <button
-            className="button"
-            id="alignLeft"
-            title="Left Align"
-            onClick={() => changeFormat("justifyLeft")}
-          >
-            <span className="fas fa-align-left"></span>
-          </button>
-          <button
-            className="button"
-            id="alignCenter"
-            title="Center Align"
-            onClick={() => changeFormat("justifyCenter")}
-          >
-            <span className="fas fa-align-center"></span>
-          </button>
-          <button
-            className="button"
-            id="alignRight"
-            title="Right Align"
-            onClick={() => changeFormat("justifyRight")}
-          >
-            <span className="fas fa-align-right"></span>
-          </button>
-          <button
-            className="button"
-            id="alignJustify"
-            title="Justify Align"
-            onClick={() => changeFormat("justifyFull")}
-          >
-            <span className="fa-solid fa-align-justify"></span>
-          </button>
-          <button
-            className="button"
-            id="list"
-            title="Bullet Point List"
-            onClick={() => changeFormat("insertunorderedlist")}
-          >
-            <span className="fa fa-list fa-fw"></span>
-          </button>
-          <button
-            className="button"
-            id="orderedList"
-            title="Numbered List"
-            onClick={() => changeFormat("insertorderedlist")}
-          >
-            <span className="fa fa-list-ol"></span>
-          </button>
-          <button
-            className="button"
-            id="hyperlink"
-            title="Hyperlink"
-            onClick={() => {
-              const link = prompt("What url do you want the text to link to? ");
-              if (link != null) {
-                const selectedText = document.getSelection();
-                changeFormat(
-                  "insertHTML",
-                  '<a href="' +
-                    link +
-                    '" target="_blank">' +
-                    selectedText +
-                    "</a>",
-                );
-              }
-            }}
-          >
-            <span className="fa fa-link fa-fw"></span>
-          </button>
-          <button
-            className="button"
-            id="removeHyperlink"
-            title="Remove HyperLink"
-            onClick={() => changeFormat("unlink")}
-          >
-            <span className="fa fa-link-slash"></span>
-          </button>
-          <button
-            className="button"
-            id="lineDivider"
-            title="Line Divider"
-            onClick={() => changeFormat("insertHorizontalRule")}
-          >
-            <span className="fa-solid fa-arrows-left-right"></span>
-          </button>
-          <button
-            className="button"
-            id="subscript"
-            title="Subscript"
-            onClick={() => changeFormat("subscript")}
-          >
-            <span className="fa fa-subscript"></span>
-          </button>
-          <button
-            className="button"
-            id="superscript"
-            title="Superscript"
-            onClick={() => changeFormat("superscript")}
-          >
-            <span className="fa fa-superscript"></span>
-          </button>
-          <button
-            className="button"
-            id="clearFormat"
-            title="Clear Formatting"
-            onClick={() => changeFormat("removeFormat")}
-          >
-            <span className="fa fa-text-slash"></span>
-          </button>
-          <button
-            className="button"
-            id="clearNotes"
-            title="Clear Notes"
-            onClick={() => {
-              notesRef.current?.innerHTML.replaceAll(/(.|\W)*/gi, "");
-            }}
-          >
-            <span className="fa fa-trash"></span>
-          </button>
+          />
         </div>
       </div>
 
-      <br />
+      <div className="toolbar-container">
+        <div className="toolbar-section">
+          {/*<label className="toolbar-label">Formatting Tools</label>*/}
+          <div className="buttonMenu">
+            <div className="button-group">
+              <button
+                className="button"
+                title="Undo"
+                onClick={() => changeFormat("undo")}
+              >
+                <span className="fa-solid fa-rotate-left"></span>
+              </button>
+              <button
+                className="button"
+                title="Redo"
+                onClick={() => changeFormat("redo")}
+              >
+                <span className="fa-solid fa-rotate-right"></span>
+              </button>
+            </div>
+
+            <div className="button-group">
+              <button
+                className="button"
+                title="Bold"
+                onClick={() => changeFormat("bold")}
+              >
+                <span className="fa fa-bold fa-fw"></span>
+              </button>
+              <button
+                className="button"
+                title="Italic"
+                onClick={() => changeFormat("italic")}
+              >
+                <span className="fa fa-italic fa-fw"></span>
+              </button>
+              <button
+                className="button"
+                title="Underline"
+                onClick={() => changeFormat("underline")}
+              >
+                <span className="fa fa-underline"></span>
+              </button>
+              <button
+                className="button"
+                title="Strikethrough"
+                onClick={() => changeFormat("strikeThrough")}
+              >
+                <span className="fa fa-strikethrough"></span>
+              </button>
+            </div>
+
+            <div className="button-group">
+              <button
+                className="button"
+                title="Font Color"
+                onClick={() => changeFormat("foreColor", color)}
+              >
+                <span className="fa fa-font"></span>{" "}
+                <span className="fa fa-palette"></span>
+              </button>
+              <button
+                className="button"
+                title="Highlight"
+                onClick={() => changeFormat("hiliteColor", color)}
+              >
+                <span className="fa fa-highlighter"></span>
+              </button>
+              <button
+                className="button"
+                title="Background Color"
+                onClick={() => {
+                  if (notesRef.current)
+                    notesRef.current.style.backgroundColor = color;
+                }}
+              >
+                <span className="fa-solid fa-paint-roller"></span>
+              </button>
+            </div>
+
+            <div className="button-group">
+              <button
+                className="button"
+                title="Font Style"
+                onClick={() => {
+                  const fontFamily = prompt(
+                    "What font family would you like your notes to be in?",
+                  );
+                  if (fontFamily != null) changeFormat("fontName", fontFamily);
+                }}
+              >
+                Font Style
+              </button>
+              <button
+                className="button"
+                title="Font Size"
+                onClick={() => {
+                  const fontSize = prompt(
+                    "What font size would you like for your notes? (Enter a number between 1 to 7)",
+                  );
+                  if (fontSize != null)
+                    changeFormat("fontSize", parseInt(fontSize));
+                }}
+              >
+                <span className="fa-solid fa-font"></span>{" "}
+                <span className="fa-solid fa-plus"></span>
+              </button>
+            </div>
+
+            <div className="button-group">
+              <button
+                className="button"
+                title="Left Align"
+                onClick={() => changeFormat("justifyLeft")}
+              >
+                <span className="fas fa-align-left"></span>
+              </button>
+              <button
+                className="button"
+                title="Center Align"
+                onClick={() => changeFormat("justifyCenter")}
+              >
+                <span className="fas fa-align-center"></span>
+              </button>
+              <button
+                className="button"
+                title="Right Align"
+                onClick={() => changeFormat("justifyRight")}
+              >
+                <span className="fas fa-align-right"></span>
+              </button>
+              <button
+                className="button"
+                title="Justify Align"
+                onClick={() => changeFormat("justifyFull")}
+              >
+                <span className="fa-solid fa-align-justify"></span>
+              </button>
+            </div>
+
+            <div className="button-group">
+              <button
+                className="button"
+                title="Indent"
+                onClick={() => changeFormat("indent")}
+              >
+                <span className="fa-solid fa-indent"></span>
+              </button>
+              <button
+                className="button"
+                title="Outdent"
+                onClick={() => changeFormat("outdent")}
+              >
+                <span className="fa-solid fa-outdent"></span>
+              </button>
+            </div>
+
+            <div className="button-group">
+              <button
+                className="button"
+                title="Bullet Point List"
+                onClick={() => changeFormat("insertunorderedlist")}
+              >
+                <span className="fa fa-list fa-fw"></span>
+              </button>
+              <button
+                className="button"
+                title="Numbered List"
+                onClick={() => changeFormat("insertorderedlist")}
+              >
+                <span className="fa fa-list-ol"></span>
+              </button>
+            </div>
+
+            <div className="button-group">
+              <button
+                className="button"
+                title="Hyperlink"
+                onClick={() => {
+                  const link = prompt(
+                    "What url do you want the text to link to? ",
+                  );
+                  if (link != null) {
+                    const selectedText = document.getSelection();
+                    changeFormat(
+                      "insertHTML",
+                      '<a href="' +
+                        link +
+                        '" target="_blank">' +
+                        selectedText +
+                        "</a>",
+                    );
+                  }
+                }}
+              >
+                <span className="fa fa-link fa-fw"></span>
+              </button>
+              <button
+                className="button"
+                title="Remove HyperLink"
+                onClick={() => changeFormat("unlink")}
+              >
+                <span className="fa fa-link-slash"></span>
+              </button>
+            </div>
+
+            <div className="button-group">
+              <button
+                className="button"
+                title="Subscript"
+                onClick={() => changeFormat("subscript")}
+              >
+                <span className="fa fa-subscript"></span>
+              </button>
+              <button
+                className="button"
+                title="Superscript"
+                onClick={() => changeFormat("superscript")}
+              >
+                <span className="fa fa-superscript"></span>
+              </button>
+            </div>
+
+            <div className="button-group">
+              <button
+                className="button"
+                title="Line Divider"
+                onClick={() => changeFormat("insertHorizontalRule")}
+              >
+                <span className="fa-solid fa-arrows-left-right"></span>
+              </button>
+              <button
+                className="button"
+                title="Clear Formatting"
+                onClick={() => changeFormat("removeFormat")}
+              >
+                <span className="fa fa-text-slash"></span>
+              </button>
+              <button
+                className="button"
+                title="Clear Notes"
+                onClick={() => {
+                  notesRef.current?.innerHTML.replaceAll(/(.|\W)*/gi, "");
+                }}
+              >
+                <span className="fa fa-trash"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div
         contentEditable="true"
@@ -368,16 +369,15 @@ function App() {
         suppressContentEditableWarning={true}
       />
 
-      <br />
-
-      <div style={{ display: "flex" }}>
+      <div className="action-bar">
         <button
           className="save"
           id="save"
           title="Save Note on NoteLab"
           onClick={save}
         >
-          <span className="fa-regular fa-floppy-disk"></span> Save Notes
+          <span className="fa-regular fa-floppy-disk"></span>
+          <span>Save Notes</span>
         </button>
         <button
           className="save"
@@ -385,26 +385,44 @@ function App() {
           title="Download Note as Word Document"
           onClick={handleSaveFile}
         >
-          <span className="fa-solid fa-download"></span> Save as Word Document
+          <span className="fa-solid fa-download"></span>
+          <span>Save as Word Document</span>
         </button>
-        <div
-          id="not-saved"
-          style={{ display: saveStatus === "not saved" ? "initial" : "none" }}
+        {saveStatus === "not saved" && (
+          <div id="not-saved" className="status-indicator">
+            <span className="fa fa-circle"></span>
+            <span>Not Saved</span>
+          </div>
+        )}
+        {saveStatus === "saving" && (
+          <div id="saving" className="status-indicator">
+            <span className="fa fa-spinner fa-spin"></span>
+            <span>Saving...</span>
+          </div>
+        )}
+        {saveStatus === "saved" && (
+          <div id="saved" className="status-indicator">
+            <span className="fa fa-check-circle"></span>
+            <span>Saved</span>
+          </div>
+        )}
+      </div>
+
+      <div className="footer">
+        <a
+          href="mailto:notelab-support@example.com?subject=Bug Report&body=Please describe the bug you encountered:"
+          title="Report a bug"
         >
-          Not Saved
-        </div>
-        <div
-          id="saving"
-          style={{ display: saveStatus === "saving" ? "initial" : "none" }}
+          <span className="fa fa-bug"></span>
+          <span>Report Bug</span>
+        </a>
+        <a
+          href="mailto:notelab-support@example.com?subject=Feature Request&body=Please describe the feature you'd like to see:"
+          title="Request a feature"
         >
-          Saving...
-        </div>
-        <div
-          id="saved"
-          style={{ display: saveStatus === "saved" ? "initial" : "none" }}
-        >
-          <span>Saved</span>
-        </div>
+          <span className="fa fa-lightbulb"></span>
+          <span>Request Feature</span>
+        </a>
       </div>
     </div>
   );

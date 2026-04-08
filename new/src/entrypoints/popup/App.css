@@ -1,82 +1,300 @@
 :root {
   --primary-color: #ffffff;
   --secondary-color: #2B2B2B;
+  --accent-color: #4085f0;
+  --accent-hover: #3574d9;
+  --danger-color: #eb4336;
+  --danger-hover: #d63b2f;
+  --warning-color: #FABB29;
+  --success-color: #30A858;
+  --border-color: #e0e0e0;
+  --toolbar-bg: #f5f5f5;
 }
 
 .dark-mode {
-  --primary-color: #2B2B2B;
+  --primary-color: #1e1e1e;
   --secondary-color: #ffffff;
-  transition-timing-function: ease-in-out;
-  transition-duration: 1s;
+  --border-color: #404040;
+  --toolbar-bg: #2d2d2d;
 }
 
 .theme {
   background-color: var(--primary-color);
-  transition-timing-function: ease-in-out;
-  transition-duration: 1s;
+  color: var(--secondary-color);
+  transition: all 0.3s ease;
+  min-height: calc(100vh - 24px);
+  padding: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--border-color);
+  position: relative;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.header-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.header-color-picker {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.color-picker-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--success-color);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.title {
+  color: var(--accent-color);
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.5px;
 }
 
 #darkMode {
-  transition-timing-function: ease-in-out;
-  transition-duration: 1s;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  background-color: var(--toolbar-bg);
+}
+
+#darkMode:hover {
+  background-color: var(--border-color);
+  transform: scale(1.05);
+}
+
+.toolbar-container {
+  background-color: var(--toolbar-bg);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.toolbar-section {
+  margin-bottom: 8px;
+}
+
+.toolbar-section:last-child {
+  margin-bottom: 0;
+}
+
+.toolbar-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--success-color);
+  margin-bottom: 6px;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+#colorPicker {
+  padding: 2px;
+  cursor: pointer;
+  border: 2px solid var(--border-color);
+  border-radius: 4px;
+  height: 28px;
+  width: 50px;
+  transition: all 0.2s ease;
+}
+  width: 50px;
+  transition: all 0.2s ease;
+}
+
+#colorPicker:hover {
+  border-color: var(--accent-color);
+}
+
+.buttonMenu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  max-width: 100%;
+}
+
+.button-group {
+  display: flex;
+  gap: 1px;
+  background-color: var(--primary-color);
+  border-radius: 4px;
+  padding: 1px;
+}
+
+.button {
+  color: var(--secondary-color);
+  background-color: transparent;
+  border: none;
+  padding: 6px 8px;
+  margin: 0;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  height: 28px;
+}
+
+.button:hover {
+  background-color: var(--warning-color);
+  color: #000;
+  transform: translateY(-1px);
+}
+
+.button:active {
+  transform: translateY(0);
 }
 
 .notes {
-  border-color: #eb4336;
-  border-width: thick;
-  min-height: 26em;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  min-height: 18em;
   min-width: 30em;
   resize: both;
   overflow: auto;
   max-height: 475px;
-  max-width: 785px;
-}
-
-.title {
-  color: #4085f0;
-  text-align: center;
-  font-size: xx-large;
-}
-
-#colorPicker {
-  margin-bottom: 15px;
-  padding: 2px;
-}
-
-.save:hover {
-  background-color: #eb4336;
-  cursor: pointer;
-}
-
-.buttonMenu {
-  max-width: 584px;
-  margin: 0 auto;
-}
-
-.button, .save {
+  max-width: 728px;
+  padding: 12px;
+  background-color: var(--primary-color);
   color: var(--secondary-color);
-  background-color: transparent;
-  border: var(--secondary-color) solid 1px;
-  padding: 7px;
-  margin: 0.2px;
-  transition: color 1s ease-in-out, border 1s ease-in-out;
+  transition: border-color 0.2s ease;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
-.button:hover {
-  background-color: #FABB29;
-  cursor: pointer;
+.notes:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(64, 133, 240, 0.1);
+}
+
+.action-bar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 12px;
 }
 
 .save {
-  margin-right: 10px;
+  color: #fff;
+  background-color: var(--accent-color);
+  border: none;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  font-weight: 600;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.save:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.save:active {
+  transform: translateY(0);
 }
 
 #save_file {
-  margin-right: unset;
+  background-color: var(--success-color);
 }
 
-#saved, #saving, #not-saved {
+#save_file:hover {
+  background-color: #28934d;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+#saved {
+  color: var(--success-color);
+  background-color: rgba(48, 168, 88, 0.1);
+}
+
+#saving {
+  color: var(--warning-color);
+  background-color: rgba(250, 187, 41, 0.1);
+}
+
+#not-saved {
+  color: var(--danger-color);
+  background-color: rgba(235, 67, 54, 0.1);
+}
+
+.footer {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  font-size: 11px;
+}
+
+.footer a {
   color: var(--secondary-color);
-  transition: color 1s ease-in-out;
-  margin: auto;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  opacity: 0.7;
+}
+
+.footer a:hover {
+  opacity: 1;
+  background-color: var(--toolbar-bg);
 }
