@@ -170,7 +170,6 @@ function App() {
 
       <div className="toolbar-container">
         <div className="toolbar-section">
-          {/*<label className="toolbar-label">Formatting Tools</label>*/}
           <div className="buttonMenu">
             <div className="button-group">
               <button
