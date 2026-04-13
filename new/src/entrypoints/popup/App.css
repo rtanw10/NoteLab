@@ -43,26 +43,12 @@
   flex: 1;
 }
 
-.header-center {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-}
-
 .header-right {
   display: flex;
   align-items: center;
   gap: 6px;
   flex: 1;
   justify-content: flex-end;
-}
-
-.header-color-picker {
-  display: flex;
-  align-items: center;
-  gap: 6px;
 }
 
 .color-picker-label {
@@ -100,7 +86,7 @@
 .domain-indicator {
   display: flex;
   align-items: center;
-  gap: 6px;
+  justify-content: space-between;
   padding: 6px 12px;
   background-color: var(--toolbar-bg);
   border-radius: 6px;
@@ -110,16 +96,44 @@
   border: 1px solid var(--border-color);
 }
 
+.domain-display {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .domain-text {
   font-weight: 500;
   color: var(--accent-color);
+}
+
+.mode-toggle {
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--secondary-color);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mode-toggle:hover {
+  border-color: var(--accent-color);
+}
+
+.mode-toggle.active {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: #fff;
 }
 
 .toolbar-container {
   background-color: var(--toolbar-bg);
   border-radius: 8px;
   padding: 10px 12px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   border: 1px solid var(--border-color);
 }
 
@@ -129,6 +143,14 @@
 
 .toolbar-section:last-child {
   margin-bottom: 0;
+}
+
+.toolbar-color-picker {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  min-height: 30px;
 }
 
 .toolbar-label {
@@ -147,9 +169,6 @@
   border: 2px solid var(--border-color);
   border-radius: 4px;
   height: 28px;
-  width: 50px;
-  transition: all 0.2s ease;
-}
   width: 50px;
   transition: all 0.2s ease;
 }
@@ -203,7 +222,7 @@
 .notes {
   border: 2px solid var(--border-color);
   border-radius: 8px;
-  min-height: 18em;
+  min-height: 15em;
   min-width: 30em;
   resize: both;
   overflow: auto;

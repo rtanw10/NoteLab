@@ -1,5 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import "./App.css";
+import { sendMessage } from "../../utils/messaging";
+
+type NotesMode = "website" | "global";
+
+const NOTES_MODE_STORAGE_KEY = "notes_mode";
 
 function App() {
   const [saveStatus, setSaveStatus] = useState<
@@ -7,6 +12,7 @@ function App() {
   >("saved");
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [color, setColor] = useState("#000000");
+  const [notesMode, setNotesMode] = useState<NotesMode>("website");
   const [currentDomain, setCurrentDomain] = useState<string>("global");
   const notesRef = useRef<HTMLDivElement>(null);
   const saveTimeoutRef = useRef(0);
@@ -20,24 +26,22 @@ function App() {
     }
   };
 
-  const getStorageKey = (domain: string) => {
+  const getStorageKey = (domain: string, mode: NotesMode) => {
+    if (mode === "global") return "notes_global";
     return `notes_${domain}`;
   };
 
-  useEffect(() => {
+  const loadNotesForMode = (mode: NotesMode) => {
     browser.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       const tab = tabs[0];
-      if (!tab?.url) {
-        setCurrentDomain("global");
-        return;
-      }
-
-      const domain = getDomainFromUrl(tab.url);
+      const domain = tab?.url ? getDomainFromUrl(tab.url) : "global";
       setCurrentDomain(domain);
 
       if (!notesRef.current) return;
 
-      const savedNotes = window.localStorage.getItem(getStorageKey(domain));
+      const savedNotes = window.localStorage.getItem(
+        getStorageKey(domain, mode),
+      );
       if (savedNotes !== null) {
         notesRef.current.innerHTML = savedNotes;
       } else {
@@ -45,12 +49,20 @@ function App() {
       }
 
       tabs.forEach(async (tabItem) => {
-        if (!notesRef.current) return;
+        if (!notesRef.current || !tabItem.id) return;
         const text = await sendMessage("get", undefined, tabItem.id);
         if (!text) return;
         notesRef.current.innerHTML += "<br>" + text;
       });
     });
+  };
+
+  useEffect(() => {
+    const persistedMode = window.localStorage.getItem(NOTES_MODE_STORAGE_KEY);
+    const initialMode: NotesMode =
+      persistedMode === "global" ? "global" : "website";
+    setNotesMode(initialMode);
+    loadNotesForMode(initialMode);
   }, []);
 
   const save = () => {
@@ -58,12 +70,28 @@ function App() {
     setTimeout(() => {
       if (notesRef.current?.innerHTML) {
         window.localStorage.setItem(
-          getStorageKey(currentDomain),
+          getStorageKey(currentDomain, notesMode),
           notesRef.current?.innerHTML,
         );
       }
       setSaveStatus("saved");
     }, 1500);
+  };
+
+  const toggleNotesMode = () => {
+    clearTimeout(saveTimeoutRef.current);
+    if (notesRef.current?.innerHTML) {
+      window.localStorage.setItem(
+        getStorageKey(currentDomain, notesMode),
+        notesRef.current.innerHTML,
+      );
+    }
+
+    const nextMode: NotesMode = notesMode === "global" ? "website" : "global";
+    setNotesMode(nextMode);
+    window.localStorage.setItem(NOTES_MODE_STORAGE_KEY, nextMode);
+    setSaveStatus("saved");
+    loadNotesForMode(nextMode);
   };
 
   const onInput = () => {
@@ -109,20 +137,6 @@ function App() {
         <div className="header-left">
           <h1 className="title">NoteLab</h1>
         </div>
-        <div className="header-center">
-          <div className="header-color-picker">
-            <label htmlFor="colorPicker" className="color-picker-label">
-              Color:
-            </label>
-            <input
-              type="color"
-              id="colorPicker"
-              value={color}
-              onChange={(e) => setColor(e.target.value)}
-              title="Select color for text and highlights"
-            />
-          </div>
-        </div>
         <div className="header-right">
           <img
             src="https://cdn-icons-png.flaticon.com/512/5558/5558282.png"
@@ -138,8 +152,20 @@ function App() {
       </div>
 
       <div className="domain-indicator">
-        <span className="fa fa-globe"></span>
-        <span className="domain-text">{currentDomain}</span>
+        <div className="domain-display">
+          <span className="fa fa-globe"></span>
+          <span className="domain-text">
+            {notesMode === "global" ? "Global Notes" : currentDomain}
+          </span>
+        </div>
+        <button
+          className={"mode-toggle " + (notesMode === "global" ? "active" : "")}
+          type="button"
+          onClick={toggleNotesMode}
+          title="Toggle between global and website-based notes"
+        >
+          Global: {notesMode === "global" ? "On" : "Off"}
+        </button>
       </div>
 
       <div className="toolbar-container">
@@ -390,6 +416,18 @@ function App() {
                 <span className="fa fa-trash"></span>
               </button>
             </div>
+            <div className="toolbar-color-picker">
+              <label htmlFor="colorPicker" className="color-picker-label">
+                Color:
+              </label>
+              <input
+                type="color"
+                id="colorPicker"
+                value={color}
+                onChange={(e) => setColor(e.target.value)}
+                title="Select color for text and highlights"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -444,14 +482,14 @@ function App() {
 
       <div className="footer">
         <a
-          href="mailto:notelab-support@example.com?subject=Bug Report&body=Please describe the bug you encountered:"
+          href="mailto:notelab2022@gmail.com?subject=Bug Report&body=Please describe the bug you encountered:"
           title="Report a bug"
         >
           <span className="fa fa-bug"></span>
           <span>Report Bug</span>
         </a>
         <a
-          href="mailto:notelab-support@example.com?subject=Feature Request&body=Please describe the feature you'd like to see:"
+          href="mailto:notelab2022@gmail.com?subject=Feature Request&body=Please describe the feature you'd like to see:"
           title="Request a feature"
         >
           <span className="fa fa-lightbulb"></span>
