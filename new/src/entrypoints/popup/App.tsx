@@ -7,20 +7,46 @@ function App() {
   >("saved");
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [color, setColor] = useState("#000000");
+  const [currentDomain, setCurrentDomain] = useState<string>("global");
   const notesRef = useRef<HTMLDivElement>(null);
   const saveTimeoutRef = useRef(0);
 
-  useEffect(() => {
-    if (!notesRef.current) return;
-    const savedNotes = window.localStorage.getItem("notes");
-    if (savedNotes !== null) {
-      notesRef.current.innerHTML = savedNotes;
+  const getDomainFromUrl = (url: string): string => {
+    try {
+      const urlObj = new URL(url);
+      return urlObj.hostname;
+    } catch {
+      return "global";
     }
+  };
 
+  const getStorageKey = (domain: string) => {
+    return `notes_${domain}`;
+  };
+
+  useEffect(() => {
     browser.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      tabs.forEach(async (tab) => {
+      const tab = tabs[0];
+      if (!tab?.url) {
+        setCurrentDomain("global");
+        return;
+      }
+
+      const domain = getDomainFromUrl(tab.url);
+      setCurrentDomain(domain);
+
+      if (!notesRef.current) return;
+
+      const savedNotes = window.localStorage.getItem(getStorageKey(domain));
+      if (savedNotes !== null) {
+        notesRef.current.innerHTML = savedNotes;
+      } else {
+        notesRef.current.innerHTML = "";
+      }
+
+      tabs.forEach(async (tabItem) => {
         if (!notesRef.current) return;
-        const text = await sendMessage("get", undefined, tab.id);
+        const text = await sendMessage("get", undefined, tabItem.id);
         if (!text) return;
         notesRef.current.innerHTML += "<br>" + text;
       });
@@ -31,7 +57,10 @@ function App() {
     setSaveStatus("saving");
     setTimeout(() => {
       if (notesRef.current?.innerHTML) {
-        window.localStorage.setItem("notes", notesRef.current?.innerHTML);
+        window.localStorage.setItem(
+          getStorageKey(currentDomain),
+          notesRef.current?.innerHTML,
+        );
       }
       setSaveStatus("saved");
     }, 1500);
@@ -83,7 +112,7 @@ function App() {
         <div className="header-center">
           <div className="header-color-picker">
             <label htmlFor="colorPicker" className="color-picker-label">
-              Color Picker:
+              Color:
             </label>
             <input
               type="color"
@@ -106,6 +135,11 @@ function App() {
             }}
           />
         </div>
+      </div>
+
+      <div className="domain-indicator">
+        <span className="fa fa-globe"></span>
+        <span className="domain-text">{currentDomain}</span>
       </div>
 
       <div className="toolbar-container">
